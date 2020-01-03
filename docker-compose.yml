@@ -38,7 +38,7 @@ services:
     image: httpd:latest
     container_name: webpage
     volumes: 
-      - /phu/webpage:/var/www/html/
+      - /phu/webpage/:/var/www/html/
     labels: 
       - "traefik.backend=thelounge"
       - "traefik.enable=true"
