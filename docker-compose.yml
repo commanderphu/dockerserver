@@ -10,5 +10,49 @@ services:
       - 443:443
       - 8080:8080
     volumes: 
-     - /var/run/docker.sock:/var/run/docker.sock
-     
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik:/etc/traefik
+    environment: 
+      - "TZ=Europe/Berlin"
+    networks: 
+      - traefik_network
+      - default
+  
+  
+  thelounge: 
+    image: thelounge/lounge:latest
+    container_name: thelounge
+    volumes: 
+      - /var/docker/thelounge:/home/
+    labels: 
+      - "traefik.backend=thelounge"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:chat.phuonline.de"
+      - "traefik.port=9000"
+      - "traefik.docker.network=traefik_proxy"
+    networks: 
+      - traefik_proxy
+
+
+  web:
+    image: httpd:latest
+    container_name: webpage
+    volumes: 
+      - webpage:/var/www/html/
+    labels: 
+      - "traefik.backend=thelounge"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:phuonline.de"
+      - "traefik.port=80"
+      - "traefik.docker.network=traefik_proxy"
+    networks: 
+      - traefik_proxy
+
+
+      
+networks: 
+  traefik_proxy:
+    external: 
+      name: traefik_proxy
+  default:
+    driver: bridge
