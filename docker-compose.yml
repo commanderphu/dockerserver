@@ -3,7 +3,7 @@ version: '3'
 services: 
   traefik: 
     restart: always
-    image: traefik:latest
+    image: traefik:v1.78
     container_name: traefik
     ports: 
       - 80:80
@@ -40,7 +40,7 @@ services:
     volumes: 
       - /phu/webpage/:/var/www/html/
     labels: 
-      - "traefik.backend=thelounge"
+      - "traefik.backend=web"
       - "traefik.enable=true"
       - "traefik.frontend.rule=Host:phuonline.de"
       - "traefik.port=80"

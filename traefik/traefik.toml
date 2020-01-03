@@ -1,5 +1,5 @@
 logLevel = "INFO"
-  defaultEntryPoints = ["http", "https"]
+defaultEntryPoints = ["http", "https"]
 
 [web]
   address = ":8080"
