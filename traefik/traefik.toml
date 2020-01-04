@@ -18,20 +18,23 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      certFile = "/etc/certificate/cert.crt"
+      keyFile = "/etc/certificate/cert.key"
 
  # Let's encrypt configuration
- [acme]
-   email="admin@phuonline.de"
-   storage="/etc/traefik/acme/acme.json"
-   caServer="https://acme-staging-v02.api.letsencrypt.org/directory"
-   entryPoint="https"
-   acmeLogging=true
-   OnHostRule=true
-   [[acme.domains]]
-      main ="phuonline.de"
-   [[acme.domains]]
-      main = "*.phuonline.de"
-   [acme.httpChallenge]
-     entryPoint = "http"
+ # [acme]
+ #  email="admin@phuonline.de"
+ # storage="/etc/traefik/acme/acme.json"
+ #  caServer="https://acme-staging-v02.api.letsencrypt.org/directory"
+ #  entryPoint="https"
+ #  acmeLogging=true
+ #  OnHostRule=true
+ #  [[acme.domains]]
+ #     main ="phuonline.de"
+ #  [[acme.domains]]
+ #     main = "*.phuonline.de"
+ #  [acme.httpChallenge]
+ #    entryPoint = "http"
      
 

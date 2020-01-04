@@ -12,6 +12,7 @@ services:
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik:/etc/traefik
+      - ./certificate:/etc/certificate
     environment: 
       - "TZ=Europe/Berlin"
     networks: 
