@@ -13,14 +13,14 @@ defaultEntryPoints = ["http", "https"]
 [entryPoints]
   [entryPoints.http]
   address = ":80"
-    [entryPoints.http.redirect]
-    entryPoint = "https"
-  [entryPoints.https]
-  address = ":443"
-    [entryPoints.https.tls]
-      [[entryPoints.https.tls.certificates]]
-      certFile = "/etc/certificate/cert.crt"
-      keyFile = "/etc/certificate/cert.key"
+#    [entryPoints.http.redirect]
+#    entryPoint = "https"
+#  [entryPoints.https]
+#  address = ":443"
+#    [entryPoints.https.tls]
+#      [[entryPoints.https.tls.certificates]]
+#      certFile = "/etc/certificate/cert.crt"
+#      keyFile = "/etc/certificate/cert.key"
 
  # Let's encrypt configuration
  # [acme]
