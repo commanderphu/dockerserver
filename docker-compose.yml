@@ -15,7 +15,7 @@ services:
     environment: 
       - "TZ=Europe/Berlin"
     networks: 
-      - traefik_network
+      - traefik_proxy
       - default
 
   web:
