@@ -33,7 +33,7 @@ services:
     networks: 
       - traefik_proxy
  
-  radicale:
+      radicale:
     image: tomsquest/docker-radicale:amd64.2.1.11.0
     container_name: radicale
     ports: 
@@ -42,7 +42,7 @@ services:
       - "traefik.backend=radicale"
       - "traefik.enable=true"
       - "traefik.frontend.rule=Host:dav.phuonline.de"
-      - "traefik.port=5232
+      - "traefik.port=5232"
       - "traefik.docker.network=traefik_proxy"
     networks: 
       - traefik_proxy
