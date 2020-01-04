@@ -17,28 +17,12 @@ services:
     networks: 
       - traefik_network
       - default
-  
-  
-  thelounge: 
-    image: thelounge/lounge:latest
-    container_name: thelounge
-    volumes: 
-      - /var/docker/thelounge:/home/
-    labels: 
-      - "traefik.backend=thelounge"
-      - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:chat.phuonline.de"
-      - "traefik.port=9000"
-      - "traefik.docker.network=traefik_proxy"
-    networks: 
-      - traefik_proxy
-
 
   web:
     image: httpd:latest
     container_name: webpage
     volumes: 
-      - /phu/webpage/:/var/www/html/
+      - /phu/webpage/:/usr/local/apache2/htdocs
     labels: 
       - "traefik.backend=web"
       - "traefik.enable=true"
