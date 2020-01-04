@@ -33,7 +33,7 @@ services:
     networks: 
       - traefik_proxy
  
-      radicale:
+  radicale:
     image: tomsquest/docker-radicale:amd64.2.1.11.0
     container_name: radicale
     ports: 
