@@ -23,6 +23,7 @@ defaultEntryPoints = ["http", "https"]
  [acme]
    email="admin@phuonline.de"
    storage="/etc/traefik/acme/acme.json"
+   caServer="https://acme-staging-v02.api.letsencrypt.org/directory"
    entryPoint="https"
    acmeLogging=true
    OnHostRule=true
