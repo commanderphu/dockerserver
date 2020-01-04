@@ -27,5 +27,11 @@ defaultEntryPoints = ["http", "https"]
    entryPoint="https"
    acmeLogging=true
    OnHostRule=true
+   [[acme.domains]]
+      main ="phuonline.de"
+   [[acme.domains]]
+      main = "*.phuonline.de"
    [acme.httpChallenge]
      entryPoint = "http"
+     
+
