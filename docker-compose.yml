@@ -54,7 +54,7 @@ services:
     image: portainer/portainer
     container_name: portainer
     volumes: 
-      portainer_data:/data
+      - portainer_data:/data
     ports: 
       - 8000:8000
       - 9000:9000    
@@ -68,7 +68,7 @@ services:
     networks: 
       - traefik_proxy
 
-      
+
   radicale:
     image: tomsquest/docker-radicale:amd64.2.1.11.0
     container_name: radicale
