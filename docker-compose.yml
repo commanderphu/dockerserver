@@ -46,11 +46,29 @@ services:
       - "traefik.frontend.rule=Host:git.phuonline.de"
       - "traefik.port=80"
       - "traefik.port=443"
-      - "traefik.port=22"
       - "traefik.docker.network=traefik_proxy"
     networks: 
       - traefik_proxy
-  
+
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    volumes: 
+      portainer_data:/data
+    ports: 
+      - 8000:8000
+      - 9000:9000    
+    labels:
+      - "traefik.backend=portainer"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:docker.phuonline.de"
+      - "traefik.port=8000"
+      - "traefik.port=9000"
+      - "traefik.docker.network=traefik_proxy"
+    networks: 
+      - traefik_proxy
+
+      
   radicale:
     image: tomsquest/docker-radicale:amd64.2.1.11.0
     container_name: radicale
