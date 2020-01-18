@@ -37,6 +37,7 @@ services:
     image: gitlab/gitlab-ce:lastest
     container_name: gitlab
     volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
       - /srv/gitlab/config:/etc/gitlab
       - /srv/gitlab/logs:/var/log/gitlab
       - /srv/gitlab/data:/var/opt/gitlab 
@@ -53,7 +54,8 @@ services:
   portainer:
     image: portainer/portainer
     container_name: portainer
-    volumes: 
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
       - portainer_data:/data
     ports: 
       - 8000:8000
