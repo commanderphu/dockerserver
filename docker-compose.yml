@@ -33,26 +33,20 @@ services:
     networks: 
       - traefik_proxy
 
-  portainer:
-    image: portainer/portainer
-    container_name: portainer
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock 
-      - portainer_data:/data
+  blog: 
+    image: ghost:latest
+    restart: always
     ports: 
-      - 8000:8000
-      - 9000:9000    
+      - 8080:2368
     labels:
-      - "traefik.backend=portainer"
+      - "traefik.backend=blog"
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:docker.phuonline.de"
-      - "traefik.port=8000"
-      - "traefik.port=9000"
+      - "traefik.frontend.rule=Host:blog.phuonline.de"
+      - "traefik.port=80"
       - "traefik.docker.network=traefik_proxy"
     networks: 
       - traefik_proxy
-
-
+      
   radicale:
     image: tomsquest/docker-radicale:amd64.2.1.11.0
     container_name: radicale
