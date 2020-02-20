@@ -32,21 +32,7 @@ services:
       - "traefik.docker.network=traefik_proxy"
     networks: 
       - traefik_proxy
-
-  blog: 
-    image: ghost:latest
-    container_name: blog
-    restart: always
-    environment: 
-      - url=http://blog.phuonline.de
-    labels:
-      - "traefik.backend=blog"
-      - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:blog.phuonline.de"
-      - "traefik.port=2368"
-      - "traefik.docker.network=traefik_proxy"
-    networks: 
-      - traefik_proxy
+      
 networks: 
   traefik_proxy:
     external: 
