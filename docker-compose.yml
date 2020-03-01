@@ -23,7 +23,7 @@ services:
     image: httpd:latest
     container_name: webpage
     volumes: 
-      - /phu/webpage/:/usr/local/apache2/htdocs
+s      - /phu/webpage/web/:/usr/local/apache2/htdocs
     labels: 
       - "traefik.backend=web"
       - "traefik.enable=true"
@@ -32,7 +32,6 @@ services:
       - "traefik.docker.network=traefik_proxy"
     networks: 
       - traefik_proxy
-      
 networks: 
   traefik_proxy:
     external: 
