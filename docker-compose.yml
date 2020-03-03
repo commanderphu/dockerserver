@@ -22,7 +22,7 @@ services:
     image: httpd:latest
     container_name: webpage
     volumes: 
-      - /phu/webpage/web/:/usr/local/apache2/htdocs
+      - /phu/webpage-commanderphu/:/usr/local/apache2/htdocs
     labels: 
       - "traefik.backend=web"
       - "traefik.enable=true"
